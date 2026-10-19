@@ -1,0 +1,12 @@
+{
+  "language_code": "en-US",
+  "boost_groups": [
+    {
+      "score": 20,
+      "phrases": [
+        "AntiBERTa",
+        "ABlooper"
+      ]
+    }
+  ]
+}

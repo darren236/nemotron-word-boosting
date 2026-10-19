@@ -1,0 +1,7 @@
+.git
+.cache
+.env
+__pycache__
+*.pyc
+data/*.wav
+results/*.json

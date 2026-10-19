@@ -1,0 +1,12 @@
+.DS_Store
+.env
+__pycache__/
+*.py[cod]
+.cache/
+.pytest_cache/
+
+# Copied from the NIM container by `make samples`.
+data/*.wav
+
+# Generated comparison reports.
+results/*.json

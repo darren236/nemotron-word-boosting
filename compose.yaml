@@ -1,0 +1,36 @@
+name: nemotron-word-boosting
+
+services:
+  nim:
+    image: ${NIM_IMAGE:-nvcr.io/nim/nvidia/nemotron-asr-streaming:1.4.0}
+    container_name: nemotron-word-boosting-nim
+    runtime: nvidia
+    shm_size: 8gb
+    environment:
+      NGC_API_KEY: ${NGC_API_KEY:-}
+      NIM_HTTP_API_PORT: "9000"
+      NIM_GRPC_API_PORT: "50051"
+      NIM_TAGS_SELECTOR: ${NIM_TAGS_SELECTOR:-name=nemotron-asr-streaming,type=en-US,batch_size=32}
+    ports:
+      - "${NIM_HTTP_PORT:-9000}:9000"
+      - "${NIM_GRPC_PORT:-50051}:50051"
+    volumes:
+      - ./.cache/nim:/opt/nim/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${GPU_DEVICE:-0}"]
+              capabilities: [gpu]
+
+  client:
+    build:
+      context: .
+    depends_on:
+      - nim
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    profiles:
+      - tools
