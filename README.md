@@ -16,6 +16,7 @@ and the example client both run in containers.
 | I want to... | Go here |
 | --- | --- |
 | Run the example | [Quick start](#quick-start) |
+| Learn to code word boosting step by step | [Study guide](STUDY_GUIDE.md) |
 | Understand word boosting | [How it works](#how-it-works) |
 | Change the words or scores | [`config/boosting.json`](config/boosting.json) and [What to change](#what-to-change) |
 | Read the smallest code example | [`examples/minimal.py`](examples/minimal.py) |
